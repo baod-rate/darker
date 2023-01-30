@@ -23,6 +23,8 @@ from darker.config import (
 )
 from darker.tests.helpers import raises_if_exception
 
+pytestmark = pytest.mark.usefixtures("find_project_root_cache_clear")
+
 
 @pytest.mark.kwparametrize(
     dict(list_value=[], expect="[\n]"),
@@ -437,7 +439,7 @@ def test_output_mode_from_args(diff, stdout, expect):
     expect={"CONFIG_PATH": "."},
 )
 def test_load_config(  # pylint: disable=too-many-arguments
-    find_project_root_cache_clear, tmp_path, monkeypatch, srcs, cwd, confpath, expect
+    tmp_path, monkeypatch, srcs, cwd, confpath, expect
 ):
     """``load_config()`` finds and loads configuration based on source file paths"""
     (tmp_path / ".git").mkdir()
