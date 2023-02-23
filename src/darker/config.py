@@ -2,7 +2,6 @@
 
 import logging
 import os
-import sys
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -11,11 +10,7 @@ from typing import Iterable, List, Optional, Set, cast
 import toml
 
 from darker.black_compat import find_project_root
-
-if sys.version_info >= (3, 8):
-    from typing import TypedDict
-else:
-    from typing_extensions import TypedDict
+from darkgraylib.config import BaseConfig
 
 
 class TomlArrayLinesEncoder(toml.TomlEncoder):  # type: ignore
@@ -26,24 +21,17 @@ class TomlArrayLinesEncoder(toml.TomlEncoder):  # type: ignore
         return "[{}\n]".format("".join(f"\n    {self.dump_value(item)}," for item in v))
 
 
-class DarkerConfig(TypedDict, total=False):
+class DarkerConfig(BaseConfig, total=False):
     """Dictionary representing ``[tool.darker]`` from ``pyproject.toml``"""
 
-    src: List[str]
-    revision: str
     diff: bool
-    stdout: bool
     check: bool
     isort: bool
     lint: List[str]
-    config: str
-    log_level: int
-    color: bool
     skip_string_normalization: bool
     skip_magic_trailing_comma: bool
     line_length: int
     target_version: str
-    workers: int
 
 
 class OutputMode:
