@@ -8,7 +8,7 @@ from argparse import Action, ArgumentError
 from datetime import datetime
 from difflib import unified_diff
 from pathlib import Path
-from typing import Collection, Generator, List, Optional, Tuple
+from typing import Collection, Generator, List, Optional
 
 from darker.black_diff import (
     BlackConfig,
@@ -42,12 +42,10 @@ from darker.verification import ASTVerifier, BinarySearch, NotEquivalentError
 from darkgraylib.config import show_config_if_debug
 from darkgraylib.git import RevisionRange
 from darkgraylib.log import setup_logging
-from darkgraylib.main import resolve_paths
+from darkgraylib.main import ProcessedDocument, resolve_paths
 from graylint.linting import run_linters
 
 logger = logging.getLogger(__name__)
-
-ProcessedDocument = Tuple[Path, TextDocument, TextDocument]
 
 
 def format_edited_parts(  # pylint: disable=too-many-arguments
