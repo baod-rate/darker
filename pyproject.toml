@@ -16,3 +16,8 @@ src = [
     "src",
 ]
 revision = "origin/master..."
+
+[tool.ruff]
+select = ["ALL"]
+ignore = ["D203", "D213"]
+target-version = ["py37"]
