@@ -9,7 +9,8 @@ from darker.black_compat import find_project_root
 from darker.diff import diff_chunks
 from darker.exceptions import IncompatiblePackageError, MissingPackageError
 from darker.git import EditedLinenumsDiffer
-from darker.utils import DiffChunk, TextDocument, glob_any
+from darker.utils import DiffChunk, glob_any
+from darkgraylib.utils import TextDocument
 
 if sys.version_info >= (3, 8):
     from typing import TypedDict
