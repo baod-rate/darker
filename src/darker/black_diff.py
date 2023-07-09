@@ -55,7 +55,7 @@ from black.files import gen_python_files
 from black.report import Report
 
 from darker.config import ConfigurationError
-from darker.utils import TextDocument
+from darkgraylib.utils import TextDocument
 
 if sys.version_info >= (3, 8):
     from typing import TypedDict
