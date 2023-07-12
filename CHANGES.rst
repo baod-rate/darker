@@ -20,6 +20,10 @@ Added
   This makes the option compatible with Black.
 - Upgrade NixOS tests to use Python 3.11 on both Linux and macOS.
 
+Updated
+-------
+- Update CI ``lint-action`` to version 2.3.0.
+
 Fixed
 -----
 - Revert running ``commit-range`` from the repository itself. This broke the GitHub
